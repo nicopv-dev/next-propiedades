@@ -1,0 +1,192 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum Role {
+  USER
+  ADMIN
+}
+
+model User {
+  id Int @id @default(autoincrement())
+  createdAt DateTime @default(now())
+  email String @unique
+  image String?
+  emailVerified DateTime?
+  name String?
+  lastname String?
+  role Role @default(USER)
+  rooms Room[]
+  reviews Review[]
+  avatar Image? @relation(fields: [imageId], references: [id])
+  imageId Int?
+  accounts Account[]
+  sessions Session[]
+  wishlists Wishlist[]
+  likes Like[]
+  schedules Schedule[]
+}
+
+model Category {
+  id Int @id @default(autoincrement())
+  createdAt DateTime @default(now())
+  title String
+  icon String?
+  rooms Room[]
+}
+
+model Room {
+  id Int @id @default(autoincrement())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  price Int @default(0)
+  published Boolean @default(false)
+  title String @db.VarChar(255)
+  description String @db.Text()
+  address String?
+  author User? @relation(fields: [authorId], references: [id])
+  authorId Int?
+  lat String?
+  long String?
+  category Category? @relation(fields: [categoryId], references: [id])
+  categoryId Int?
+  services ServiceOnRooms[]
+  pais Pais? @relation(fields: [paisId], references: [id])
+  paisId Int?
+  images ImageOnRooms[]
+  schedules Schedule[]
+  guests Int @default(0)
+  reviews Review[]
+  roomOnWishlist RoomOnWishlist[]
+  likes Like[]
+}
+
+model Pais {
+  id Int @id @default(autoincrement())
+  title String
+  rooms Room[]
+}
+
+model Service {
+  id Int @id @default(autoincrement())
+  title String
+  rooms ServiceOnRooms[]
+}
+
+model ServiceOnRooms {
+  room Room @relation(fields: [roomId], references: [id])
+  roomId Int
+  service Service @relation(fields: [serviceId], references: [id])
+  serviceId Int
+
+  @@id([roomId, serviceId])
+}
+
+model Image {
+  id Int @id @default(autoincrement())
+  path String
+  rooms ImageOnRooms[]
+  user User[]
+}
+
+model ImageOnRooms {
+  room Room @relation(fields: [roomId], references: [id])
+  roomId Int
+  image Image @relation(fields: [imageId], references: [id])
+  imageId Int
+
+  @@id([roomId, imageId])
+}
+
+model Review {
+  id Int @id @default(autoincrement())
+  description String @db.Text
+  user User? @relation(fields: [userId], references: [id])
+  userId Int?
+  createdAt DateTime @default(now())
+  room Room? @relation(fields: [roomId], references: [id])
+  roomId Int?
+}
+
+model Schedule {
+  id Int @id @default(autoincrement())
+  date DateTime?
+  room Room @relation(fields: [roomId], references: [id], onDelete: Cascade)
+  roomId Int
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId Int
+}
+
+// Sessions
+model Account {
+  id                 String  @id @default(cuid())
+  userId             Int 
+  type               String
+  provider           String
+  providerAccountId  String  @map("provider_account_id")
+  refresh_token      String?
+  access_token       String?
+  expires_at         Int?
+  token_type         String?
+  scope              String?
+  id_token           String?
+  session_state      String?
+  oauth_token_secret String?
+  oauth_token        String?
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([provider, providerAccountId])
+}
+
+model Session {
+  id           String   @id @default(cuid())
+  sessionToken String   @unique @map("session_token")
+  userId       Int 
+  expires      DateTime
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model VerificationToken {
+  id         Int      @id @default(autoincrement())
+  identifier String
+  token      String   @unique
+  expires    DateTime
+
+  @@unique([identifier, token])
+}
+
+model Wishlist {
+  id String @id @default(uuid())
+  title String 
+  createdAt DateTime @default(now())
+  user User? @relation(fields: [userId], references: [id])
+  userId Int?
+  roomOnWishlist RoomOnWishlist[]
+}
+
+model RoomOnWishlist {
+  room Room @relation(fields: [roomId], references: [id])
+  roomId Int
+  wishlist Wishlist @relation(fields: [wishlistId], references: [id])
+  wishlistId String
+
+  @@id([roomId, wishlistId])
+}
+
+model Like {
+  id Int @id @default(autoincrement())
+  room Room @relation(fields: [roomId], references: [id])
+  roomId Int
+  user User @relation(fields: [userId], references: [id])
+  userId Int
+  createdAt DateTime @default(now())
+}
