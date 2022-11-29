@@ -2,13 +2,11 @@ import { useSession, signOut } from 'next-auth/react';
 import { useRouter } from 'next/router';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
-import Languaje from '../Languaje';
-import { IoAddOutline } from 'react-icons/io5';
 
 const LINKS: { id: number; link: string; text: string }[] = [
   { id: 1, link: '/profile', text: 'Mi perfil' },
   { id: 2, link: '/notifications', text: 'Notificaciones' },
-  { id: 3, link: '/trips', text: 'Viajes' },
+  { id: 3, link: '/trips', text: 'Horas' },
   { id: 4, link: '/wishlists', text: 'Lista de Favoritos' },
   { id: 5, link: '/likes', text: 'Me Gusta' },
 ];
@@ -44,15 +42,6 @@ export default function AuthBar({
 
   return (
     <div className="flex items-center gap-3">
-      {session?.user?.role === 'ADMIN' ? (
-        <button
-          type="button"
-          className="bg-primary text-white text-sm px-4 py-2 rounded-lg flex items-center gap-1"
-        >
-          <IoAddOutline />
-          Crear Propiedad
-        </button>
-      ) : null}
       <div className="relative">
         <button
           type="button"

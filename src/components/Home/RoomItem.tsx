@@ -107,7 +107,7 @@ export default function RoomItem({ room }: IRoomItemProps) {
             Kilometros
           </p>
         )}
-        <p className="text-base font-light text-gray-500">1 - 7 oct</p>
+        {/* <p className="text-base font-light text-gray-500">1 - 7 oct</p> */}
         <p className="font-semibold">
           ${formatNumber(room?.price)} CLP{' '}
           <span className="font-normal text-gray-500">/ mes</span>

@@ -34,7 +34,7 @@ export default function MainLayout({ children, title }: IMainLayoutProps) {
   return (
     <>
       <HeadComponent title={title} />
-      <div className="relative">
+      <div>
         {/* HEADER */}
         <Header />
         {/* CONTENT */}

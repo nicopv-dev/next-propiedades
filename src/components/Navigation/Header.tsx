@@ -29,7 +29,7 @@ export default function Header() {
 
   return (
     <header
-      className={`fixed top-0 left-0 z-20 bg-white w-full h-20 flex items-center justify-between px-4 sm:px-10 md:px-20 lg:px-24 border-b border-b-slate-200`}
+      className={`sticky top-0 left-0 z-20 bg-white w-full h-20 flex items-center justify-between px-4 sm:px-10 md:px-20 lg:px-24 border-b border-b-slate-200`}
     >
       {/* left */}
       <div className="w-full h-full flex items-center">

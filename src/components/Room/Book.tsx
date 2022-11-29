@@ -3,25 +3,35 @@ import { formatNumber } from '../../utils/methods';
 import { DatePicker } from 'antd';
 import Schedule from '../../interfaces/Schedule';
 import type { RangePickerProps } from 'antd/es/date-picker';
+import { toast } from 'react-toastify';
 
 import Moment from 'moment';
+import { useSession } from 'next-auth/react';
 
 interface ISelectedDate {
-  date: Date;
+  date: string;
   isSelected: boolean;
 }
 
 interface IBookProps {
+  roomId: number;
   price: number;
   maxGuests: number;
   schedules?: Schedule[];
+  addSchedule: (newSchedule: Schedule) => void;
 }
 
-export default function Book({ price, schedules }: IBookProps) {
+export default function Book({
+  roomId,
+  price,
+  schedules,
+  addSchedule,
+}: IBookProps) {
   const [selectedDate, setSelectedDate] = useState<ISelectedDate>({
-    date: new Date(),
+    date: '',
     isSelected: false,
   });
+  const { data: session } = useSession();
 
   // disabled dates
   const disabledDate: RangePickerProps['disabledDate'] = (current) => {
@@ -45,11 +55,40 @@ export default function Book({ price, schedules }: IBookProps) {
 
   // set selected date from datepicker
   const onChange: DatePickerProps['onChange'] = (date, dateString) => {
-    console.log(date, dateString);
+    setSelectedDate({ date: `${dateString}T19:14:23.586Z`, isSelected: true });
+
+    //2022-12-01T19:14:23.586Z
   };
 
-  const solicitar = () => {
-    console.log(selectedDate);
+  const solicitar = async () => {
+    if (selectedDate.isSelected) {
+      try {
+        const data = {
+          date: selectedDate.date,
+          roomId: roomId,
+          userId: session?.user?.id,
+        };
+        const response = await fetch(
+          'http://localhost:3000/api/propiedad/schedule',
+          {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(data),
+          }
+        );
+
+        if (response.status === 200) {
+          const data = await response.json();
+          addSchedule(data?.schedule as Schedule);
+          toast.success('Hora Agendada', { autoClose: 7000 });
+        }
+      } catch (err) {
+        console.log(err);
+        toast.errorr('Error al agendar hora', { autoClose: 7000 });
+      }
+    }
   };
 
   return (

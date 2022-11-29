@@ -13,6 +13,7 @@ interface IHomeHeaderProps {
 export default function HomeHeader({ room, isLike }: IHomeHeaderProps) {
   const [showModal, setShowModal] = useState<boolean>(false);
   const [modalContent, setModalContent] = useState<JSX.Element>(<div />);
+  const [isLikeState, setIsLikeState] = useState<boolean>(isLike);
 
   const openModal = () => {
     setShowModal(true);
@@ -21,6 +22,14 @@ export default function HomeHeader({ room, isLike }: IHomeHeaderProps) {
 
   const onChangeShowModal = (value: boolean): void => {
     setShowModal(value);
+  };
+
+  const like = async (like: boolean) => {
+    setIsLikeState(like);
+  };
+
+  const unLike = async (like: boolean) => {
+    setIsLikeState(like);
   };
 
   return (
@@ -46,14 +55,23 @@ export default function HomeHeader({ room, isLike }: IHomeHeaderProps) {
             <FiShare className="h-4 w-4" />
             Compartir
           </button>
-          <button className="flex items-center gap-1 text-sm">
-            {isLike ? (
+          {isLikeState ? (
+            <button
+              className="flex items-center gap-1 text-sm"
+              onClick={() => unLike(false)}
+            >
               <IoHeart className="h-4 w-4 text-red-500" />
-            ) : (
+              No me gusta
+            </button>
+          ) : (
+            <button
+              className="flex items-center gap-1 text-sm"
+              onClick={() => like(true)}
+            >
               <FiHeart className="h-4 w-4" />
-            )}
-            Me Gusta
-          </button>
+              Me gusta
+            </button>
+          )}
           <button className="flex items-center gap-1 text-sm">
             <FiPlus className="h-4 w-4" />
             Agregar

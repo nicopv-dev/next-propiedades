@@ -7,8 +7,8 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        primary: '#63DA9D',
-        primary_dark: '#43D88B',
+        primary: '#F2E21E',
+        primary_dark: '#E5D516',
         white: '#fff',
         black: '#000',
         grey: '#717171',

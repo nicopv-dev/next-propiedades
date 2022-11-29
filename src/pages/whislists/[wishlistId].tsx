@@ -37,7 +37,7 @@ const Wishlist = ({ error, wishlist }: IWishlistProps) => {
       ) : (
         <div className="flex gap-4">
           {/* list */}
-          <div className="flex-1 xl:flex-[0.55_1_0%] py-20 px-4 sm:px-10 md:px-20 lg:px-24 2xl:px-32">
+          <div className="flex-1 xl:flex-[0.55_1_0%] px-4 sm:px-10 md:px-20 lg:px-24 2xl:px-32">
             {/* header */}
             <div className="space-y-2">
               {/* icons */}

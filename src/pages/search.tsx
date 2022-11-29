@@ -20,7 +20,7 @@ interface ISearchProps {
 function Search({ results, query, error, zone }: ISearchProps) {
   return (
     <MainLayout title={`Airbnb - Alojamiento en ${query?.q || ''}`}>
-      <div className="py-20 pl-4 pr-4 sm:pr-0">
+      <div className="pl-4 pr-4 sm:pr-0">
         {!error ? (
           <div className="flex gap-10 relative w-full">
             {/* results */}

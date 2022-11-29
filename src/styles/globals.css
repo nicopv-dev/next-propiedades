@@ -30,3 +30,7 @@
 .MuiSlider-root {
   color: black !important;
 }
+
+.ant-switch-checked {
+  background-color: #63da9d !important;
+}

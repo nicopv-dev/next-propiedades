@@ -6,12 +6,23 @@ import { Provider } from 'react-redux';
 import store from '../app/store';
 import NextNProgress from 'nextjs-progressbar';
 
+import 'react-big-calendar/lib/css/react-big-calendar.css';
+
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/ReactToastify.min.css';
+
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <Provider store={store}>
       <SessionProvider session={pageProps.session}>
-        <NextNProgress color="#63DA9D" height={3} />
+        <NextNProgress color="#F2E21E" height={3} />
         <Component {...pageProps} />
+        <ToastContainer
+          position="top-right"
+          newestOnTop
+          theme="light"
+          pauseOnHover={false}
+        />
       </SessionProvider>
     </Provider>
   );

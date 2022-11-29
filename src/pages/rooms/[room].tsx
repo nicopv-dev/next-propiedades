@@ -3,6 +3,7 @@ import { GetServerSideProps, GetServerSidePropsContext, NextPage } from 'next';
 import { getSession } from 'next-auth/react';
 import Error from '../../components/Error';
 import Room from '../../interfaces/Room';
+import Schedule from '../../interfaces/Schedule';
 import MainLayout from '../../layouts/MainLayout';
 import Feature from '../../components/Member/Feature';
 import Book from '../../components/Room/Book';
@@ -15,6 +16,7 @@ import Map from '../../components/Room/Map';
 import Rules from '../../components/Room/Rules';
 import RoomReviews from '../../components/Room/RoomReviews';
 import UserInfo from '../../components/Room/UserInfo';
+import { useState } from 'react';
 
 interface IRoomProps {
   room?: Room;
@@ -23,6 +25,12 @@ interface IRoomProps {
 }
 
 const Room: NextPage = ({ error, room, isLike }: IRoomProps) => {
+  const [schedules, setSchedules] = useState<Schedule[]>(room?.schedules);
+
+  const addSchedule = (newSchedule: Schedule) => {
+    setSchedules((current) => [...current, newSchedule]);
+  };
+
   return (
     <MainLayout
       title={`${
@@ -32,7 +40,7 @@ const Room: NextPage = ({ error, room, isLike }: IRoomProps) => {
       {error ? (
         <Error title="Room no encontrada" />
       ) : (
-        <div className="min-h-screen py-14 sm:py-20 px-4 sm:px-10 md:px-20 lg:px-24">
+        <div className="min-h-screen pb-20 px-4 sm:px-10 md:px-20 lg:px-24">
           {/* header */}
           <HomeHeader room={room} isLike={isLike || false} />
 
@@ -81,9 +89,11 @@ const Room: NextPage = ({ error, room, isLike }: IRoomProps) => {
               {/* right */}
               <div className="flex-1 lg:flex-[0.4_1_0%] xl:flex-[0.3_1_0%] flex justify-center md:block">
                 <Book
+                  roomId={room.id}
                   price={room?.price || 0}
                   maxGuests={room?.guests ? room.guests : 0}
-                  schedules={room?.schedules}
+                  schedules={schedules}
+                  addSchedule={addSchedule}
                 />
               </div>
             </div>

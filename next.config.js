@@ -8,6 +8,7 @@ const nextConfig = {
       'res.cloudinary.com',
       'lh3.googleusercontent.com',
       'cdn-icons-png.flaticon.com',
+      'next-propiedades.s3.us-east-2.amazonaws.com',
     ],
   },
 };

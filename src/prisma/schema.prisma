@@ -98,7 +98,7 @@ model Image {
 }
 
 model ImageOnRooms {
-  room Room @relation(fields: [roomId], references: [id])
+  room Room @relation(fields: [roomId], references: [id], onDelete: Cascade)
   roomId Int
   image Image @relation(fields: [imageId], references: [id])
   imageId Int

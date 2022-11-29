@@ -54,7 +54,7 @@ const Home = ({ error, categories, rooms }: IHomeProps) => {
       {error ? (
         <Error title="Error en el servidor" />
       ) : (
-        <div className="py-8 mt-14">
+        <div className="pb-10">
           {/* categories / filter */}
           <div
             className={`px-4 sm:px-10 md:px-12 lg:px-24 w-full bg-white sticky top-20 lef-0 z-10 transition-all duration-300 border-b ${

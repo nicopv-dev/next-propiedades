@@ -11,7 +11,7 @@ interface ILikesProps {
 
 export default function Likes({ rooms }: ILikesProps) {
   return (
-    <MainLayout title="Habitaciones que me gustan en Airbnb">
+    <MainLayout title="Lugares que me gustan">
       <LikesRooms rooms={rooms} />
     </MainLayout>
   );

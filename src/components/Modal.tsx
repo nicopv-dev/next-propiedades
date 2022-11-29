@@ -11,7 +11,8 @@ interface IModalProps {
     | 'max-w-xl'
     | 'max-w-2xl'
     | 'max-w-3xl'
-    | 'max-w-4xl';
+    | 'max-w-4xl'
+    | 'max-w-6xl';
   title: string;
   children?: JSX.Element;
 }
@@ -57,7 +58,7 @@ export default function Modal({
           variants={backDrop}
           initial="hidden"
           animate={isOpen ? 'visible' : 'hidden'}
-          className="fixed top-0 left-0 w-full h-screen bg-black bg-opacity-20 z-30 grid place-items-center"
+          className="fixed top-0 left-0 w-full h-screen bg-black bg-opacity-30 z-30 grid place-items-center"
         >
           <motion.div
             variants={modal}

@@ -16,7 +16,7 @@ interface IWhislistsProps {
 function Wishlists({ wishlists, error }: IWhislistsProps) {
   return (
     <MainLayout title="Mis Favoritos - Airbnb">
-      <div className="py-20 px-4 sm:px-10 md:px-20 lg:px-24">
+      <div className="pb-20 px-4 sm:px-10 md:px-20 lg:px-24">
         {error ? (
           <Error title="Error al cargar la lista" />
         ) : (
