@@ -31,6 +31,10 @@
   color: black !important;
 }
 
+.ant-switch {
+  background-color: rgb(235, 238, 240) !important;
+}
+
 .ant-switch-checked {
-  background-color: #63da9d !important;
+  background-color: #f2e21e !important;
 }

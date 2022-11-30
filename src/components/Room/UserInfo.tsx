@@ -13,7 +13,7 @@ export default function UserInfo({ room }: IUserInfoProps) {
           Anfitrion: {room?.author?.name}
         </h1>
         <p>
-          <span>{room?.guests} habitaciónes, 2 baños</span>
+          <span>{room?.guests} habitaciónes</span>
         </p>
       </div>
       {/* user image */}

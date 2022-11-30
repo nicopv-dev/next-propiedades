@@ -9,6 +9,7 @@ import PropiedadItem from '../../components/Profile/Propiedades/PropiedadItem';
 import Modal from '../../components/Modal';
 import CreatePropiedadForm from '../../components/Profile/Propiedades/CreatePropiedadForm';
 import EditPropiedadForm from '../../components/Profile/Propiedades/EditPropiedadForm';
+import { IoAddOutline } from 'react-icons/io5';
 
 interface IPropiedadesProps {
   propiedades: Room[];
@@ -51,7 +52,12 @@ function Propiedades({ propiedades, error }: IPropiedadesProps) {
             <h2 className="text-2xl font-extrabold">Mis Propiedades</h2>
             <div className="flex items-center justify-between">
               <p>Maneja tus propiedades agregedas</p>
-              <button type="button" onClick={() => openModal(0)}>
+              <button
+                type="button"
+                onClick={() => openModal(0)}
+                className="bg-primary text-black px-4 py-1 rounded-md flex items-center"
+              >
+                <IoAddOutline />
                 Agregar propiedad
               </button>
             </div>

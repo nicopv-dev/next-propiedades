@@ -4,10 +4,9 @@ import Image from 'next/image';
 import { motion } from 'framer-motion';
 
 const LINKS: { id: number; link: string; text: string }[] = [
-  { id: 1, link: '/profile', text: 'Mi perfil' },
-  { id: 2, link: '/notifications', text: 'Notificaciones' },
-  { id: 3, link: '/trips', text: 'Horas' },
-  { id: 4, link: '/wishlists', text: 'Lista de Favoritos' },
+  { id: 1, link: '/profile/propiedades', text: 'Mis propiedades' },
+  // { id: 3, link: '/trips', text: 'Horas' },
+  // { id: 4, link: '/wishlists', text: 'Lista de Favoritos' },
   { id: 5, link: '/likes', text: 'Me Gusta' },
 ];
 
@@ -79,17 +78,9 @@ export default function AuthBar({
               ))}
             </div>
             {/* items */}
-            <div className="flex flex-col pt-2">
-              <ButtonItem
-                link=""
-                text="Organiza una experiencia"
-                textBold={false}
-              />
-              <ButtonItem link="" text="Cuenta" textBold={false} />
-            </div>
+
             {/* help */}
             <div className="flex flex-col pt-2">
-              <ButtonItem link="/help" text="Ayuda" />
               <button
                 className="py-2 px-4 text-[14px] hover:cursor-pointer flex justify-start bg-white transtion duration-200 hover:bg-gray-100"
                 type="button"

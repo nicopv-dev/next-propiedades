@@ -1,4 +1,3 @@
-import Image from 'next/image';
 import { useRouter } from 'next/router';
 import SearchBar from './SearchBar';
 import { motion } from 'framer-motion';
@@ -34,17 +33,10 @@ export default function Header() {
       {/* left */}
       <div className="w-full h-full flex items-center">
         <div
-          className="h-20 w-20 sm:w-24 sm:h-24 hover:cursor-pointer"
+          className="h-full flex items-center hover:cursor-pointer"
           onClick={() => goTo('/')}
         >
-          <Image
-            src={'/images/logo.png'}
-            alt="Airbnb logo"
-            width={100}
-            height={100}
-            objectFit="contain"
-            className="w-full object-cover"
-          />
+          <h1 className="text-primary text-xl font-extrabold">PROPIEDADES</h1>
         </div>
       </div>
       {/* center */}

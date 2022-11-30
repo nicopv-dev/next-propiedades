@@ -8,11 +8,11 @@ export default function ProfileSidebar() {
   return (
     <nav className="flex-[0.3_1_0%] border border-au_gray">
       <div className="flex flex-col divide-y divide-au_gray">
-        <LinkItem
+        {/* <LinkItem
           title="MI PERFIL"
           link="/profile"
           icon={<IoPersonCircleOutline />}
-        />
+        /> */}
         {session?.user.role === 'ADMIN' && (
           <>
             <LinkItem

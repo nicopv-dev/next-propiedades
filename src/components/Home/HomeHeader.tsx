@@ -55,7 +55,7 @@ export default function HomeHeader({ room, isLike }: IHomeHeaderProps) {
             <FiShare className="h-4 w-4" />
             Compartir
           </button>
-          {isLikeState ? (
+          {/* {isLikeState ? (
             <button
               className="flex items-center gap-1 text-sm"
               onClick={() => unLike(false)}
@@ -75,7 +75,7 @@ export default function HomeHeader({ room, isLike }: IHomeHeaderProps) {
           <button className="flex items-center gap-1 text-sm">
             <FiPlus className="h-4 w-4" />
             Agregar
-          </button>
+          </button> */}
         </div>
 
         <Modal

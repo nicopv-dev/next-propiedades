@@ -39,20 +39,12 @@ export default function Host({ host }: IHostProps) {
         </div>
 
         {/* host list */}
-        <ul className="space-y-3">
-          <li>Idiomas: English, Español</li>
-          <li>Índice de respuesta: 100%</li>
-          <li>Tiempo de respuesta: en menos de una hora</li>
-        </ul>
 
         {/* host comunication */}
         <div className="space-y-2">
-          <button className="py-2 px-8 p border border-black rounded-lg">
-            Ponte en contacto con el anfitrion
-          </button>
           <p className="text-xs max-w-sm">
             Para proteger tus pagos, nunca transfieras dinero ni te comuniques
-            fuera de la página o la aplicación de Airbnb.
+            fuera de la página o la aplicación.
           </p>
         </div>
       </div>

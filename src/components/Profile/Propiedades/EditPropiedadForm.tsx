@@ -15,7 +15,6 @@ interface IEditPropiedadFormProps {
 
 export default function EditPropiedadForm({
   onChangeShowModal,
-  deletePropiedad,
   propiedad,
 }: IEditPropiedadFormProps) {
   const { data: session } = useSession();
@@ -23,7 +22,7 @@ export default function EditPropiedadForm({
   const [address, setAddress] = useState<string>(propiedad.address);
   const [description, setDescription] = useState<string>(propiedad.description);
   const [price, setPrice] = useState<number>(propiedad.price);
-  const [tipo, setTipo] = useState<string>(propiedad.category.id);
+  const [tipo, setTipo] = useState<number>(propiedad.category.id);
   const [guests, setGuests] = useState<number>(propiedad.guests);
   const [city, setCity] = useState<string>(propiedad.pais.id);
   const [lat, setLat] = useState<string>(propiedad.lat);

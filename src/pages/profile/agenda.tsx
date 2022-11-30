@@ -18,10 +18,14 @@ function Agenda({ schedules, error }: IAgendaProps) {
   return (
     <MainLayout title="Mi Agenda">
       <ProfileLayout>
-        <div>
-          {error ? (
-            <Loading />
-          ) : (
+        {error ? (
+          <Loading />
+        ) : (
+          <div className="p-10 space-y-4">
+            <div>
+              <h3 className="text-3xl font-bold">Mi Agenda</h3>
+              <p>Maneja tu agenda y visitas</p>
+            </div>
             <Calendar
               localizer={localizer}
               events={schedules}
@@ -29,8 +33,8 @@ function Agenda({ schedules, error }: IAgendaProps) {
               endAccessor="end"
               style={{ height: 500 }}
             />
-          )}
-        </div>
+          </div>
+        )}
       </ProfileLayout>
     </MainLayout>
   );

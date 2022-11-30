@@ -62,28 +62,14 @@ const Room: NextPage = ({ error, room, isLike }: IRoomProps) => {
                 </div>
 
                 {/* host */}
-                <div className="space-y-6 pt-8">
+                <div className="space-y-6 py-8">
                   <Feature
-                    title="Alina tiene la categoría de Superanfitrión"
-                    description="Los Superanfitriones tienen mucha experiencia, cuentan con
-                      valoraciones excelentes y se esfuerzan al máximo para
-                      ofrecerles a los huéspedes estadías maravillosas."
-                  />
-                  <Feature
-                    title="Alina tiene la categoría de Superanfitrión"
-                    description="Los Superanfitriones tienen mucha experiencia, cuentan con
-                      valoraciones excelentes y se esfuerzan al máximo para
-                      ofrecerles a los huéspedes estadías maravillosas."
-                  />
-                  <Feature
-                    title="Alina tiene la categoría de Superanfitrión"
-                    description="Los Superanfitriones tienen mucha experiencia, cuentan con
-                      valoraciones excelentes y se esfuerzan al máximo para
-                      ofrecerles a los huéspedes estadías maravillosas."
+                    title="Todas las propiedades estan bajo seguro."
+                    description="Luego de la solicitud de arriendo se procedera al entrega de la documentacion necesaria para terminar el proceso de arriendo."
                   />
                 </div>
-
-                <Services />
+                {/* 
+                <Services /> */}
               </div>
 
               {/* right */}
@@ -98,20 +84,12 @@ const Room: NextPage = ({ error, room, isLike }: IRoomProps) => {
               </div>
             </div>
 
-            <Guests />
-
             <Map
               latitude={parseFloat(room?.lat || '9.565220523826226')}
               longitude={parseFloat(room?.long || '-77.5063874607533')}
             />
 
-            {room && room?.reviews.length > 0 && (
-              <RoomReviews reviews={room?.reviews} />
-            )}
-
             <Host host={room?.author} />
-
-            <Rules />
           </div>
         </div>
       )}
