@@ -7,6 +7,7 @@ import { toast } from 'react-toastify';
 
 import Moment from 'moment';
 import { useSession } from 'next-auth/react';
+import Loading from '../Loading';
 
 interface ISelectedDate {
   date: string;
@@ -32,6 +33,7 @@ export default function Book({
     isSelected: false,
   });
   const { data: session } = useSession();
+  const [isLoading, setIsLoading] = useState<boolean>(false);
 
   // disabled dates
   const disabledDate: RangePickerProps['disabledDate'] = (current) => {
@@ -62,6 +64,7 @@ export default function Book({
 
   const solicitar = async () => {
     if (selectedDate.isSelected) {
+      setIsLoading(true);
       try {
         const data = {
           date: selectedDate.date,
@@ -82,10 +85,12 @@ export default function Book({
         if (response.status === 200) {
           const data = await response.json();
           addSchedule(data?.schedule as Schedule);
+          setIsLoading(false);
           toast.success('Hora Agendada', { autoClose: 7000 });
         }
       } catch (err) {
         console.log(err);
+        setIsLoading(false);
         toast.errorr('Error al agendar hora', { autoClose: 7000 });
       }
     }
@@ -114,13 +119,22 @@ export default function Book({
 
       {/* send form */}
       <div className="flex flex-col gap-2">
-        <button
-          type="button"
-          className="bg-primary_dark py-2 text-white rounded-lg"
-          onClick={solicitar}
-        >
-          SOLICITAR
-        </button>
+        {isLoading ? (
+          <button
+            type="button"
+            className="bg-primary_dark py-2 text-white rounded-lg"
+          >
+            <Loading />
+          </button>
+        ) : (
+          <button
+            type="button"
+            className="bg-primary_dark py-2 text-white rounded-lg"
+            onClick={solicitar}
+          >
+            SOLICITAR
+          </button>
+        )}
         <p className="text-xs font-light text-center">
           No se hará ningún cargo por el momento
         </p>

@@ -1,6 +1,6 @@
 import { useSession } from 'next-auth/react';
 import Link from 'next/link';
-import { IoPersonCircleOutline, IoBuild, IoAlbums } from 'react-icons/io5';
+import { IoFileTrayFull, IoBuild, IoAlbums, IoBusiness } from 'react-icons/io5';
 
 export default function ProfileSidebar() {
   const { data: session } = useSession();
@@ -18,7 +18,12 @@ export default function ProfileSidebar() {
             <LinkItem
               title="MIS PROPIEDADES"
               link="/profile/propiedades"
-              icon={<IoAlbums />}
+              icon={<IoBusiness />}
+            />
+            <LinkItem
+              title="DOCUMENTOS"
+              link="/profile/documentos"
+              icon={<IoFileTrayFull />}
             />
             <LinkItem
               title="AGENDA"

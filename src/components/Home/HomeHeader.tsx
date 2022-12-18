@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import { FiHeart, FiShare, FiPlus } from 'react-icons/fi';
-import { IoStar, IoHeart } from 'react-icons/io5';
+import { FiShare } from 'react-icons/fi';
+import { IoStar } from 'react-icons/io5';
 import Room from '../../interfaces/Room';
 import Modal from '../Modal';
 import RoomShare from './RoomShare';
@@ -10,10 +10,9 @@ interface IHomeHeaderProps {
   isLike: boolean;
 }
 
-export default function HomeHeader({ room, isLike }: IHomeHeaderProps) {
+export default function HomeHeader({ room }: IHomeHeaderProps) {
   const [showModal, setShowModal] = useState<boolean>(false);
   const [modalContent, setModalContent] = useState<JSX.Element>(<div />);
-  const [isLikeState, setIsLikeState] = useState<boolean>(isLike);
 
   const openModal = () => {
     setShowModal(true);
@@ -22,14 +21,6 @@ export default function HomeHeader({ room, isLike }: IHomeHeaderProps) {
 
   const onChangeShowModal = (value: boolean): void => {
     setShowModal(value);
-  };
-
-  const like = async (like: boolean) => {
-    setIsLikeState(like);
-  };
-
-  const unLike = async (like: boolean) => {
-    setIsLikeState(like);
   };
 
   return (

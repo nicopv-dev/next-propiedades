@@ -3,11 +3,17 @@ import { useRouter } from 'next/router';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
 
-const LINKS: { id: number; link: string; text: string }[] = [
-  { id: 1, link: '/profile/propiedades', text: 'Mis propiedades' },
+const LINKS: { id: number; link: string; text: string; adminLink: string }[] = [
+  {
+    id: 1,
+    link: '/profile/propiedades',
+    text: 'Mis propiedades',
+    adminLink: 'ADMIN',
+  },
   // { id: 3, link: '/trips', text: 'Horas' },
   // { id: 4, link: '/wishlists', text: 'Lista de Favoritos' },
-  { id: 5, link: '/likes', text: 'Me Gusta' },
+  { id: 4, link: '/horas', text: 'Mis Horas', adminLink: 'USER' },
+  { id: 5, link: '/likes', text: 'Me Gusta', adminLink: 'ALL' },
 ];
 
 interface IAuthBarProps {
@@ -68,7 +74,12 @@ export default function AuthBar({
           <div className="flex flex-col gap-2 divide-y">
             {/* items */}
             <div className="flex flex-col">
-              {LINKS.map((item) => (
+              {LINKS.filter((item) =>
+                session?.user.role === item.adminLink ||
+                item.adminLink === 'ALL'
+                  ? true
+                  : false
+              ).map((item) => (
                 <ButtonItem
                   key={item.id}
                   link={item.link}

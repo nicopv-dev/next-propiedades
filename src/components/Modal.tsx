@@ -62,7 +62,7 @@ export default function Modal({
         >
           <motion.div
             variants={modal}
-            className={`bg-white shadow-lg rounded-lg mx-auto w-full ${size} max-h-[80vh] overflow-y-auto`}
+            className={`bg-white shadow-lg rounded-lg mx-auto w-full ${size} max-h-[88vh] overflow-y-auto`}
           >
             {/* title */}
             <div className="flex items-center justify-between p-4 gap-4 border-b border-b-gray-200">

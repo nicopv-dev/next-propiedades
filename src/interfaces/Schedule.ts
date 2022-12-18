@@ -1,3 +1,4 @@
+import Documento from './Documento';
 import Room from './Room';
 import User from './User';
 
@@ -10,4 +11,5 @@ export default interface Schedule {
   allDay: boolean;
   room: Room;
   user: User;
+  approved: Documento;
 }

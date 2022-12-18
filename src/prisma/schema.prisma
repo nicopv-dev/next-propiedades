@@ -123,6 +123,17 @@ model Schedule {
   roomId Int
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
   userId Int
+  approved DocumentSchedule[]
+}
+
+model DocumentSchedule {
+  id Int @id @default(autoincrement())
+  createdAt DateTime @default(now())
+  schedule Schedule @relation(fields: [scheduleId], references: [id])
+  scheduleId Int
+  status Boolean
+  isRejected Boolean @default(false)
+  file String?
 }
 
 // Sessions

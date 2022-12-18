@@ -4,7 +4,6 @@ import useWidth from '../../hooks/useWidth';
 import Room from '../../interfaces/Room';
 import Zone from '../../interfaces/Zone';
 import { formatNumber } from '../../utils/methods';
-import Like from '../Like';
 import { IoRemoveCircleOutline } from 'react-icons/io5';
 
 interface IWishlistRoomItemProps {

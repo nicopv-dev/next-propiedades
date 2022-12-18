@@ -7,14 +7,10 @@ import Schedule from '../../interfaces/Schedule';
 import MainLayout from '../../layouts/MainLayout';
 import Feature from '../../components/Member/Feature';
 import Book from '../../components/Room/Book';
-import Services from '../../components/Room/Services';
 import Gallery from '../../components/Room/Gallery';
 import HomeHeader from '../../components/Home/HomeHeader';
-import Guests from '../../components/Room/Guests';
 import Host from '../../components/Room/Host';
 import Map from '../../components/Room/Map';
-import Rules from '../../components/Room/Rules';
-import RoomReviews from '../../components/Room/RoomReviews';
 import UserInfo from '../../components/Room/UserInfo';
 import { useState } from 'react';
 

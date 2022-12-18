@@ -28,12 +28,11 @@ const handler = nc()
         })
       );
 
-      return res.status(200).json({ message: 'Imagen subidas', images });
+      return res.status(200).json({ message: 'Archivos subidos', images });
     } catch (err) {
       console.log(err);
       return res.status(400).json({ message: 'Error al subir imagen' });
     }
-    return res.status(200).json({ folder, files });
   });
 
 export const config = {
